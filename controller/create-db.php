@@ -9,9 +9,21 @@
         //if there is an error connecting to the server: stops the code and prints an error.
         die("Error: " . $connection->connect_error);
     }
-    else {
-        //if there is no error connecting to the server: prints success.
-        echo "Success" . $connection->host_info;
+    //selects Database.
+    $exists = $connection->select_db($database);
+    //checks if database does not exists.
+    if(!$exists){
+        //sends a query to create a database.
+        $query = $connection->query("CREATE DATABASE $database");
+        //checks if database was created.
+        if($query){
+            echo "Successfully created database.".$database;
+        }
     }
+    else{
+        //echoes if database exists.
+        echo "Database already exists.";
+    }
+    
     //closes the connection.
     $connection->close();
