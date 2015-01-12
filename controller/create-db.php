@@ -1,7 +1,7 @@
 <?php
-    //Brings the data from database.php to create-db.php
+    //Brings the data from config.php to create-db.php
     //require once also checks whether it has already been inserted into memory.
-    require_once(__DIR__ ."/../model/database.php");
+    require_once(__DIR__ ."/../model/config.php");
     //$connection carries the functions to access database server.
     $connection = new mysqli($host, $username, $password);
     //a conditional statement that checks whether there is an error connecting to the server.
